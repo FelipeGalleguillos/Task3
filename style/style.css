@@ -1,0 +1,149 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.cardDetail{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+thead{
+    background-color: brown;
+    color: white;
+}
+
+tbody{
+    background-color: rgba(245, 245, 245, 0.753);
+}
+
+th,tr{
+    padding: .2rem;
+    border: .5px solid grey;
+}
+
+body{
+    background-image: url(https://jooinn.com/images/yellow-surface-4.png);
+    background-size: cover;
+    width: 100%;
+    height:100vh;
+}
+
+main{
+    padding: 2rem;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchbar{
+    height: 2rem ;
+    width: 20rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+.srchbtn{
+    background-color: transparent;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    background-image: url(https://www.transparentpng.com/thumb/search-button/PKjMIi-black-search-button-clipart-hd.png);
+    background-size: cover;
+}
+
+.socials{
+    padding: 1rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.socials a{
+    color: white;
+}
+
+.cards{    
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: fit-content;
+    padding-top: 2rem;
+
+}
+
+h1{
+    padding: 2rem 0rem 2rem 0rem;
+    text-align: center;
+    background-color: rgba(215, 208, 14, 0.696);
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    width: 100%;
+    background-color: black;
+    position: sticky;
+    bottom: 0px;
+}
+
+.footerinf{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+footer p{
+    color: white;
+    margin: 0;
+    font-size: .7rem;
+}
+
+.searchsection{
+    display: flex;
+    gap: .5rem;
+}
+
+.searchB{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;    
+}
+
+.categories{
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 935px){
+    
+    body{
+        height: fit-content;
+    }
+
+    .searchB{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .categories{
+        flex-direction: column;
+        order: 2;
+    }
+
+    .searchsection{
+        order: 1;
+    }
+
+
+    
+}
