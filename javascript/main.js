@@ -2,7 +2,6 @@
 const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 
-
 for (let cardInfo of events) {
 
     const card = document.createElement('div');
@@ -21,7 +20,7 @@ for (let cardInfo of events) {
         </div>
     </div>
     `
-    fragment.appendChild(card); 
+    fragment.appendChild(card);
 }
 
 console.log(fragment);
