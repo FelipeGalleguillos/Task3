@@ -1,12 +1,15 @@
 
-const $cardCont = document.getElementsByClassName('cards');
+const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 
 
 for (let cardInfo of events) {
 
     const card = document.createElement('div');
-    card.innerHTML= `<img src=${cardInfo.image} class="card-img-top" alt="..."></img>
+    card.classList.add('card','text-bg-danger');
+    card.style.width = '18rem';
+    card.style.height = '25rem';
+    card.innerHTML= `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
     <div class="card-body">
         <h5 class="card-title">${cardInfo.name}</h5>
         <p class="card-text">${cardInfo.description}</p>
@@ -18,10 +21,12 @@ for (let cardInfo of events) {
         </div>
     </div>
     `
-    fragment.appendChild(div); 
+    fragment.appendChild(card); 
 }
 
-card.appendChild(fragment);
+console.log(fragment);
+cardCont.appendChild(fragment);
+
 
 
 

@@ -1,7 +1,7 @@
 const events = [
     {
       "_id": 1,
-      "image":"food_fair.jpg",
+      "image":"./assets/Feria_de_comidas7.jpg",
       "name": "Festival of the collectivities",
       "date": "2021-12-12",
       "description": "Enjoy your favorite dishes from different countries in a unique event for the whole family.",
@@ -13,7 +13,7 @@ const events = [
     },
     {
       "_id": 2,
-      "image":"outing_to_the_museum.jpg",
+      "image":"./assets/Salida_al_museo5.jpg",
       "name": "Jurassic Park",
       "date": "2021-11-02",
       "description": "Let's go to the paleontology museum for an incredible tour to learn about the largest dinosaurs.",
@@ -25,7 +25,7 @@ const events = [
     },
     {
       "_id": 3,
-      "image":"costume_party.jpg",
+      "image":"./assets/Fiesta_de_disfraces1.jpg",
       "name": "Halloween Night",
       "date": "2022-02-12",
       "description": "Come in your scariest costume character to win amazing prizes.",
@@ -37,7 +37,7 @@ const events = [
     },
     {
       "_id": 4,
-      "image":"music_concert.jpg",
+      "image":"./assets/Concierto_de_musica1.jpg",
       "name": "Metallica in concert",
       "date": "2022-01-22",
       "description": "The only concert of the most emblematic band in the world",
@@ -49,7 +49,7 @@ const events = [
     },
     {
       "id": 5,
-      "image":"marathon.jpg",
+      "image":"./assets/Maraton3.jpg",
       "name": "10K for life",
       "date": "2021-03-01",
       "description": "Come and exercise, improve your health and lifestyle.",
@@ -61,7 +61,7 @@ const events = [
     },
     {
       "_id": 6,
-      "image":"books.jpg",
+      "image":"./assets/Books.jpg",
       "name": "School Book Fair",
       "date": "2021-10-15",
       "description": "Bring your unused school book and bring the one you need.",
@@ -73,7 +73,7 @@ const events = [
     },
     {
       "_id": 7,
-      "image":"cinema.jpg",
+      "image":"./assets/Cine7.jpg",
       "name": "Avengers",
       "date": "2022-10-15",
       "description": "Marvel's Avengers 3d premiere the start of an epic saga with your best superheroes",
