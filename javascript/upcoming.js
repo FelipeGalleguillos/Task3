@@ -1,26 +1,24 @@
 const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 let fechaCard;
-const tiempoActual = Date.now();
-const fechaActual = new Date(tiempoActual);
+const eventos = data.events;
+const fechaActual = data.currentDate.split('-');
 
 ////////////////////////////////////////////////////////////////////////
 const validarFechaFutura = function(fechaActual, fechaCard) {
     let diaActual, mesActual, añoActual, diaCard, mesCard, añoCard;
     
-    diaActual = fechaActual.getDate();
-    mesActual = fechaActual.getMonth() + 1;
-    añoActual = fechaActual.getFullYear();
+    diaActual = parseInt(fechaActual[2])
+    mesActual = parseInt(fechaActual[1])
+    añoActual = parseInt(fechaActual[0]) 
     diaCard = parseInt(fechaCard[2]);
     mesCard = parseInt(fechaCard[1]);
     añoCard = parseInt(fechaCard[0]);
 
     if (añoCard > añoActual) {
-        console.log("hola");
         return true;
     }else{
         if (añoCard == añoActual && mesCard > mesActual ) {
-            console.log("hola2");
             return true;
         }else{
             if (añoCard == añoActual && mesCard == mesActual && diaCard > diaActual) {
@@ -28,12 +26,11 @@ const validarFechaFutura = function(fechaActual, fechaCard) {
                 return true;
             }
         }
-        console.log("hola4");
         return false;   
     }
 }
 ////////////////////////////////////////////////////////////////////////////
-for (let cardInfo of events) {
+for (let cardInfo of eventos) {
 
 
     fechaCard = cardInfo.date.split('-');
