@@ -16,7 +16,7 @@ for (let cardInfo of events) {
     <div class="card-footer">
         <div class="d-flex justify-content-between">
             <p>$${cardInfo.price}</p>
-            <a href="#" class="btn btn-primary">See more</a>
+            <a href="#" class="btn btn-danger btn-outline-light">See more</a>
         </div>
     </div>
     `

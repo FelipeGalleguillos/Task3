@@ -4,6 +4,14 @@
     margin: 0;
 }
 
+.btn{
+    box-shadow: 6px 9px 13px 2px rgba(0,0,0,0.2);
+}
+
+.card{
+    box-shadow: 21px 26px 13px -6px rgba(0,0,0,0.21);
+}
+
 .cardDetail{
     width: 100%;
     height: 100%;
