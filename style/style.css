@@ -38,13 +38,13 @@ body{
     background-image: url(https://jooinn.com/images/yellow-surface-4.png);
     background-size: cover;
     width: 100%;
-    height:100vh;
+    min-height:100vh;
 }
 
 main{
     padding: 2rem;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,6 +137,36 @@ footer p{
     body{
         height: fit-content;
     }
+
+    .searchB{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .categories{
+        flex-direction: column;
+        order: 2;
+    }
+
+    .searchsection{
+        order: 1;
+    }
+
+
+    
+}
+@media screen and (max-width: 935px){
+    
+    /* body{
+        height: fit-content;
+    } */
+    /* main{
+        min-height: 100vh;
+    }
+
+    body{
+        min-height: 100vh;
+    } */
 
     .searchB{
         align-items: center;
