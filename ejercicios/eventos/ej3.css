@@ -1,0 +1,47 @@
+body{
+    background-image: url(https://tse2.mm.bing.net/th?id=OIP.S_q7eojcun7rOoeHMdrvDgEsDI&pid=Api&P=0);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.tachado{
+    text-decoration: line-through;
+}
+.searchB{
+    color: whitesmoke;
+    border-top: 1px;
+    border-right: 1px;
+    border-color: aliceblue;
+    width: 20rem;
+}
+
+.searchB::placeholder{
+    color: white;
+}
+
+h3{
+    color: white;
+}
+.cardCont{ 
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.153);
+}
+
+.noteContent{
+    width: 87%;
+    height: 93%;
+}
+
+.note{
+    background-image: url(https://www.pngall.com/wp-content/uploads/5/Sticky-Notes-PNG-Pic.png);
+    background-size: 115% 114%;
+    background-position: -18px;
+    width: 15rem;
+    height: 20rem;
+}
+
+.menu{
+    background-color: rgba(0, 0, 0, 0.679);
+}

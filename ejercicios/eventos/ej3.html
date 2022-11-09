@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="ej3.css">
+    <title>ejercicio3</title>
 </head>
+
 <body>
-    
+    <div class="menu d-flex justify-content-center">
+        <form class="p-3 d-flex justify-content-center w-75 flex-wrap" action="">
+            <div class="d-flex flex-column gap-2">
+                <h3>Nueva nota</h3>
+                <input class="rounded w-200 text-bg-dark" type="text" placeholder="Titulo" id="titulo" required>
+                <textarea class="text-bg-dark rounded " placeholder="Esciba el texto aqui..." id="texto" cols="30" rows="3"
+                    required></textarea>
+            </div>
+            <div class="d-flex align-items-end left-3">
+                <div class="d-flex flex-column gap-2 px-3">
+                    <input class="text-bg-success px-5" type="submit" value="Guardar">
+                    <input id="borrar" class="text-bg-danger" type="button" value="Borrar">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="inpCont d-flex flex-column px-3 py-3 gap-3" >
+        <div class="mb-3 w-25">
+            <input type="text" class="searchB bg-transparent" id="buscar" placeholder="Buscar...">
+          </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="text-white form-check-label" for="flexSwitchCheckDefault"> <strong>Realizadas</strong></label>
+        </div>
+    </div>
+    <div id="cardContainer" class="cardCont d-flex flex-wrap">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="./javascript/datos.js"></script>
+    <script src="./javascript/ej3.js"></script>
 </body>
+
 </html>
