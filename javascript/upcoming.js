@@ -88,7 +88,7 @@ function renderCards(events){
             cardDate = cardInfo.date.split('-');
             if (validateFutureDate(actualDate,cardDate)) {
                 const card = document.createElement('div');
-                card.classList.add('card', 'text-bg-danger');
+                card.classList.add('card', 'text-bg-danger', 'cardAnim');
                 card.style.width = '18rem';
                 card.style.height = '25rem';
                 card.innerHTML = `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
