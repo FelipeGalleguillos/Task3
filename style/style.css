@@ -79,6 +79,12 @@ main{
     color: white;
 }
 
+.cardD{
+    background-color: black;
+    color: aliceblue;
+    font-style: italic;
+}
+
 h3{
     color: aliceblue;
 }
