@@ -1,0 +1,7 @@
+body{
+    background-size: cover;
+}
+
+.col-md-5>img{
+    padding: 1rem 1rem;
+}
