@@ -2,13 +2,24 @@ const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 const checkCont = document.getElementById('chkCont');
 const searchBar = document.getElementById('searchSection');
-const events = data.events;
+const events = past(data.events);
 const chkCat = categories;
 let filteredCat = []
-const actualDate = data.currentDate.split('-');
 
-console.log(cardsFiltered(events,filteredCat))
-renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+
+renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+/////////////////////////////////////////////////////////////////////////////////////
+function past(events){
+    let aux = []
+    let actualDate = data.currentDate.split('-');
+    events.forEach(element => {
+        let cardDate = element.date.split('-');
+        if (validatePastDate(actualDate,cardDate)){
+            aux.push(element)
+        }   
+    });
+    return aux;
+}
 ////////////////////////////////////////////////////////////////////////////
 chkCat.forEach(element => {
     checkCont.innerHTML += `<div>
@@ -79,20 +90,18 @@ function validatePastDate(actualDate, cardDate) {
     }
 }
 ////////////////////////////////////////////////////////////////////////////
-function renderCards(events){
-    cardCont.innerHTML=""
+function renderCards(events) {
 
+    cardCont.innerHTML = ""
     if (events.length == 0) {
-        cardCont.innerHTML=`<h3>No events to show....</h3>`
-    }else{
+        cardCont.innerHTML = `<h3>No events to show....</h3>`
+    } else {
         for (let cardInfo of events) {
-            cardDate = cardInfo.date.split('-');
-            if (validatePastDate(actualDate,cardDate)) {
-                const card = document.createElement('div');
-                card.classList.add('card', 'text-bg-danger', 'cardAnim');
-                card.style.width = '18rem';
-                card.style.height = '25rem';
-                card.innerHTML = `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
+            const card = document.createElement('div');
+            card.classList.add('card', 'text-bg-danger', 'cardAnim');
+            card.style.width = '18rem';
+            card.style.height = '25rem';
+            card.innerHTML = `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
                     <div class="card-body">
                         <h5 class="card-title">${cardInfo.name}</h5>
                         <p class="card-text">${cardInfo.description}</p>
@@ -104,9 +113,8 @@ function renderCards(events){
                         </div>
                     </div>
                     `
-                fragment.appendChild(card);
-            }
-        }     
+            fragment.appendChild(card);
+        }
         cardCont.appendChild(fragment);
     }
 }

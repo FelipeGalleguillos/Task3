@@ -2,12 +2,24 @@ const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 const checkCont = document.getElementById('chkCont');
 const searchBar = document.getElementById('searchSection');
-const events = data.events;
+const events = upcoming(data.events);
 const chkCat = categories;
 let filteredCat = []
-const actualDate = data.currentDate.split('-');
 
-renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+
+renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+/////////////////////////////////////////////////////////////////////////////////////
+function upcoming(events){
+    let aux = []
+    let actualDate = data.currentDate.split('-');
+    events.forEach(element => {
+        let cardDate = element.date.split('-');
+        if (validateFutureDate(actualDate,cardDate)){
+            aux.push(element)
+        }   
+    });
+    return aux;
+}
 ////////////////////////////////////////////////////////////////////////////
 chkCat.forEach(element => {
     checkCont.innerHTML += `<div>
@@ -17,35 +29,35 @@ chkCat.forEach(element => {
     `
 });
 ////////////////////////////////////////////////////////////////////////////
-function addCategory(category){
+function addCategory(category) {
     filteredCat.push(category)
-} 
+}
 ////////////////////////////////////////////////////////////////////////////
-function deleteCategory(category){
-    filteredCat.forEach(element =>{
+function deleteCategory(category) {
+    filteredCat.forEach(element => {
         if (element == category) {
-            filteredCat.splice(filteredCat.indexOf(element),1)
+            filteredCat.splice(filteredCat.indexOf(element), 1)
         }
     })
 }
 ///////////////////////////////////////////////////////////////////////////
-function textFilter(array,text){
+function textFilter(array, text) {
     if (text.length == 0) {
         return array
     } else {
-        return array.filter(element=>element.name.toLowerCase().includes(text) || element.description.toLowerCase().includes(text))
+        return array.filter(element => element.name.toLowerCase().includes(text) || element.description.toLowerCase().includes(text))
     }
 }
 //////////////////////////////////////////////////////////////////////////////
 
-function cardsFiltered(events,categories){ //returns array with objects filtered by category
+function cardsFiltered(events, categories) { //returns array with objects filtered by category
     if (categories.length == 0) {
         return events
     } else {
         let aux1 = []
-        let aux2,aux3
+        let aux2, aux3
         categories.forEach(category => {
-            aux3 = events.filter(element=>element.category == category)
+            aux3 = events.filter(element => element.category == category)
             aux1 = aux1.concat(aux3)
         })
         aux2 = Array.from(new Set(aux1))
@@ -54,44 +66,43 @@ function cardsFiltered(events,categories){ //returns array with objects filtered
 }
 
 ////////////////////////////////////////////////////////////////////////
-function validateFutureDate(actualDate, cardDate){
+function validateFutureDate(actualDate, cardDate) {
     let actualD, actualM, actualY, cardD, cardM, cardY;
-    
+
     actualD = parseInt(actualDate[2])
     actualM = parseInt(actualDate[1])
-    actualY = parseInt(actualDate[0]) 
+    actualY = parseInt(actualDate[0])
     cardD = parseInt(cardDate[2]);
     cardM = parseInt(cardDate[1]);
     cardY = parseInt(cardDate[0]);
 
     if (cardY > actualY) {
         return true;
-    }else{
-        if (cardY == actualY && cardM > actualM ) {
+    } else {
+        if (cardY == actualY && cardM > actualM) {
             return true;
-        }else{
-            if (cardY == actualY && cardM == actualM && cardD > actualD) {;
+        } else {
+            if (cardY == actualY && cardM == actualM && cardD > actualD) {
+                ;
                 return true;
             }
         }
-        return false;   
+        return false;
     }
 }
 ////////////////////////////////////////////////////////////////////////////
-function renderCards(events){
-    
-    cardCont.innerHTML=""
+function renderCards(events) {
+
+    cardCont.innerHTML = ""
     if (events.length == 0) {
-        cardCont.innerHTML=`<h3>No events to show....</h3>`
-    }else{
+        cardCont.innerHTML = `<h3>No events to show....</h3>`
+    } else {
         for (let cardInfo of events) {
-            cardDate = cardInfo.date.split('-');
-            if (validateFutureDate(actualDate,cardDate)) {
-                const card = document.createElement('div');
-                card.classList.add('card', 'text-bg-danger', 'cardAnim');
-                card.style.width = '18rem';
-                card.style.height = '25rem';
-                card.innerHTML = `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
+            const card = document.createElement('div');
+            card.classList.add('card', 'text-bg-danger', 'cardAnim');
+            card.style.width = '18rem';
+            card.style.height = '25rem';
+            card.innerHTML = `<img src="${cardInfo.image}"class="card-img-top h-50" alt="..."></img>
                     <div class="card-body">
                         <h5 class="card-title">${cardInfo.name}</h5>
                         <p class="card-text">${cardInfo.description}</p>
@@ -103,24 +114,23 @@ function renderCards(events){
                         </div>
                     </div>
                     `
-                fragment.appendChild(card);
-            }
-        }     
+            fragment.appendChild(card);
+        }
         cardCont.appendChild(fragment);
     }
 }
 
 ///////////////////////////////////////////////////////////////////////////
-checkCont.addEventListener("click",(e)=>{
-    if(e.target.checked){
+checkCont.addEventListener("click", (e) => {
+    if (e.target.checked) {
         addCategory(e.target.value)
-        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
-    }else{
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+    } else {
         deleteCategory(e.target.value)
-        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
     }
 })
 /////////////////////////////////////////////////////////////////////////////////
-searchBar.addEventListener("keyup",()=>{
-    renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+searchBar.addEventListener("keyup", () => {
+    renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
 })
