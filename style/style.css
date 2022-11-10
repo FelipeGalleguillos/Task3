@@ -17,14 +17,18 @@
     animation-duration: 0.2s;
 }
 
-@keyframes pop {
+html{
+    width: 100%;
+}
+
+/* @keyframes pop {
     from{
         transform: scale(0.9);
     }
     to{
         transform: scale(1);
     }
-}
+} */
 
 .cardAnim:hover{
     transform: scale(1.06);
@@ -182,41 +186,17 @@ footer p{
     font-weight: 600;
 }
 
-@media screen and (max-width: 935px){
-    
-    body{
-        height: fit-content;
-    }
-
+@media screen and (min-width: 1800px){
     .searchB{
-        align-items: center;
-        flex-direction: column;
+        justify-content: space-evenly;
     }
-
-    .categories{
-        flex-direction: column;
-        order: 2;
-    }
-
-    .searchsection{
-        order: 1;
-    }
-
-
-    
 }
-@media screen and (max-width: 935px){
-    
-    /* body{
-        height: fit-content;
-    } */
-    /* main{
-        min-height: 100vh;
-    }
 
+@media screen and (max-width: 1024px){
+    
     body{
-        min-height: 100vh;
-    } */
+        height: fit-content;
+    }
 
     .searchB{
         align-items: center;
@@ -224,6 +204,11 @@ footer p{
         gap: 2rem;
     }
 
+    label{
+        width: 100%;
+        text-align: center;
+    }
+
     .categories{
         flex-direction: column;
         order: 2;
@@ -231,6 +216,36 @@ footer p{
 
     .searchsection{
         order: 1;
+    }
+}
+
+    
+
+@media screen and (max-width: 935px){
+    
+    body{
+        width: 100%;
+    }
+
+    .searchB{
+        align-items: center;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    label{
+        width: 100%;
+        text-align: center;
+    }
+
+    .categories{
+        flex-direction: column;
+        order: 2;
+    }
+
+    .searchsection{
+        order: 1;
+        width: 70%;
     }
 
 
