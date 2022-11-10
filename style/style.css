@@ -9,7 +9,25 @@
 }
 
 .card{
+    /* transform: scale(1); */
     box-shadow: 21px 26px 13px -6px rgba(0,0,0,0.12);
+    /* transition: transform 2seg ease-in-out; */
+    transition: transform 0.3s;
+    animation-name: pop;
+    animation-duration: 0.2s;
+}
+
+@keyframes pop {
+    from{
+        transform: scale(0.9);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+.card:hover{
+    transform: scale(1.06);
 }
 
 .cardDetail{
@@ -99,7 +117,7 @@ input[type=checkbox]{
 }
 
 .cardD{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.63);
     color: aliceblue;
     font-style: italic;
 }
