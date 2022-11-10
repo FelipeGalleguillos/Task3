@@ -67,6 +67,25 @@ main{
     background-color: transparent;
 }
 
+label{
+    padding: 0px 5px;
+    background-color: rgba(240, 248, 255, 0.564);
+    border-radius: 6px;
+}
+
+input:checked + label{
+    color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.64);
+}
+
+label:hover{
+    background-color: aliceblue;
+    box-shadow: 0px 0px 7px white;
+}
+
+input[type=checkbox]{
+    display: none;
+}
 
 .socials{
     padding: 1rem;
@@ -184,6 +203,7 @@ footer p{
     .searchB{
         align-items: center;
         flex-direction: column;
+        gap: 2rem;
     }
 
     .categories{
