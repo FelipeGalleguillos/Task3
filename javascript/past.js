@@ -8,7 +8,7 @@ let filteredCat = []
 const actualDate = data.currentDate.split('-');
 
 console.log(cardsFiltered(events,filteredCat))
-renderCards(cardsFiltered(events,filteredCat))
+renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
 ////////////////////////////////////////////////////////////////////////////
 chkCat.forEach(element => {
     checkCont.innerHTML += `<div>
@@ -31,7 +31,7 @@ function deleteCategory(category){
 }
 ///////////////////////////////////////////////////////////////////////////
 function textFilter(array,text){
-    if (text == "") {
+    if (text.length == 0) {
         return array
     } else {
         return array.filter(element=>element.name.toLowerCase().includes(text) || element.description.toLowerCase().includes(text))
@@ -114,10 +114,10 @@ function renderCards(events){
 checkCont.addEventListener("click",(e)=>{
     if(e.target.checked){
         addCategory(e.target.value)
-        renderCards(cardsFiltered(events,filteredCat))
+        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
     }else{
         deleteCategory(e.target.value)
-        renderCards(cardsFiltered(events,filteredCat))
+        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
     }
 })
 /////////////////////////////////////////////////////////////////////////////////
