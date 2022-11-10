@@ -122,5 +122,5 @@ checkCont.addEventListener("click",(e)=>{
 })
 /////////////////////////////////////////////////////////////////////////////////
 searchBar.addEventListener("keyup",()=>{
-    renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value))
+    renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase()))
 })
