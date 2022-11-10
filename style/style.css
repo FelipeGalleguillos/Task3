@@ -35,8 +35,8 @@ th,tr{
 }
 
 body{
-    background-image: url(https://jooinn.com/images/yellow-surface-4.png);
-    background-size: cover;
+    background-image: url(https://jooinn.com/images/blur-city.jpg);
+    background-size: contain;
     width: 100%;
     min-height:100vh;
 }
@@ -50,21 +50,23 @@ main{
     align-items: center;
 }
 
-.searchbar{
-    height: 2rem ;
-    width: 20rem;
-    border: none;
-    border-radius: 1rem;
+.searchbar::placeholder{
+    color: aliceblue;
 }
 
-.srchbtn{
+.searchbar{
+    color: white;
+    height: 2rem ;
+    width: 25rem;
+    border-color: aliceblue;
+    border-top: 1px;
+    border-right: 1px;
+    border-left: 1px;
+    outline-color: white;
+    border-radius: .2rem;
     background-color: transparent;
-    border: none;
-    width: 2rem;
-    height: 2rem;
-    background-image: url(https://www.transparentpng.com/thumb/search-button/PKjMIi-black-search-button-clipart-hd.png);
-    background-size: cover;
 }
+
 
 .socials{
     padding: 1rem;
@@ -77,6 +79,10 @@ main{
     color: white;
 }
 
+h3{
+    color: aliceblue;
+}
+
 .cards{    
     display: flex;
     justify-content: center;
@@ -87,9 +93,10 @@ main{
 }
 
 h1{
+    color:aliceblue;
     padding: 2rem 0rem 2rem 0rem;
     text-align: center;
-    background-color: rgba(215, 208, 14, 0.696);
+    background-color: rgba(7, 58, 121, 0.544);
 }
 
 footer{

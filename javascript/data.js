@@ -172,3 +172,18 @@ const data = {
   ]
 }
 
+let aux
+aux = data.events.map(element => {
+  return element.category
+})
+
+for (let i = 0; i <aux.length; i++) {
+  for (let x = 0; x < aux.length; x++) {
+    if (aux[i]==aux[x]) {
+      aux.splice(x,1)
+    }
+  }  
+}
+
+const categories = aux
+    
