@@ -198,6 +198,22 @@ footer p{
         height: fit-content;
     }
 
+    #chkCont{
+        width: 50%;
+    }
+
+    header{
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+    }
+
+    .navbar{
+        width: 100%;
+        position: relative;
+        z-index: 2;
+    }
+
     .searchB{
         align-items: center;
         flex-direction: column;
@@ -211,11 +227,11 @@ footer p{
 
     .categories{
         flex-direction: column;
-        order: 2;
+        order: 1;
     }
 
     .searchsection{
-        order: 1;
+        order: 2;
     }
 }
 
@@ -227,6 +243,27 @@ footer p{
         width: 100%;
     }
 
+    #chkCont{
+        width: 50%;
+    }
+
+    header{
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+    }
+
+    .navbar{
+        width: 100%;
+        position: sticky;
+        z-index: 3;
+    }
+
+    /* h1{
+        position: relative;
+        z-index: 2;
+    } */
+
     .searchB{
         align-items: center;
         flex-direction: column;
@@ -240,11 +277,11 @@ footer p{
 
     .categories{
         flex-direction: column;
-        order: 2;
+        order: 1;
     }
 
     .searchsection{
-        order: 1;
+        order: 2;
         width: 70%;
     }
 
