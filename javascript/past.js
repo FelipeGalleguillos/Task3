@@ -2,12 +2,39 @@ const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 const checkCont = document.getElementById('chkCont');
 const searchBar = document.getElementById('searchSection');
-const events = past(data.events);
-const chkCat = categories;
+let events;
+fetch("https://amazing-events.herokuapp.com/api/events")
+    .then(element => element.json())
+    .then(array => {
+        events = past(array.events);
+        checkCategories(events)
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+        console.log(events)
+    });
+
 let filteredCat = []
-
-
-renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+////////////////////////////////////////////////////////////////////////////
+function checkCategories(events) {
+    let aux
+    aux = events.map(element => {
+        return element.category
+    })
+    for (let i = 0; i < aux.length; i++) {
+        for (let x = 0; x < aux.length; x++) {
+            if (aux[i] == aux[x]) {
+                aux.splice(x, 1)
+            }
+        }
+    }
+    let categories = aux
+    categories.forEach(element => {
+        checkCont.innerHTML += `<div>
+                                <input type="checkbox" id="${element}" name="" value="${element}">
+                                <label class="checks" for="${element}">${element}</label>
+                                </div>
+        `
+    });
+}
 /////////////////////////////////////////////////////////////////////////////////////
 function past(events){
     let aux = []
@@ -21,13 +48,6 @@ function past(events){
     return aux;
 }
 ////////////////////////////////////////////////////////////////////////////
-chkCat.forEach(element => {
-    checkCont.innerHTML += `<div>
-                            <input type="checkbox" id="${element}" name="" value="${element}">
-                            <label class="checks" for="${element}">${element}</label>
-                            </div>
-    `
-});
 ////////////////////////////////////////////////////////////////////////////
 function addCategory(category){
     filteredCat.push(category)

@@ -2,50 +2,69 @@ const cardCont = document.getElementById('card-container');
 const fragment = document.createDocumentFragment();
 const checkCont = document.getElementById('chkCont');
 const searchBar = document.getElementById('searchSection');
-const events = data.events;
-const chkCat = categories;
+let events;
+fetch("https://amazing-events.herokuapp.com/api/events")
+    .then(element => element.json())
+    .then(array => {
+        events = array.events;
+        checkCategories(events)
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+        console.log(events)
+    });
+    
 let filteredCat = []
-
-console.log(cardsFiltered(events,filteredCat))
-renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
 ////////////////////////////////////////////////////////////////////////////
-chkCat.forEach(element => {
-    checkCont.innerHTML += `<div>
-                            <input type="checkbox" id="${element}" name="" value="${element}">
-                            <label class="checks" for="${element}">${element}</label>
-                            </div>
-    `
-});
+function checkCategories(events) {
+    let aux
+    aux = events.map(element => {
+        return element.category
+    })
+    for (let i = 0; i < aux.length; i++) {
+        for (let x = 0; x < aux.length; x++) {
+            if (aux[i] == aux[x]) {
+                aux.splice(x, 1)
+            }
+        }
+    }
+    let categories = aux
+    categories.forEach(element => {
+        checkCont.innerHTML += `<div>
+                                <input type="checkbox" id="${element}" name="" value="${element}">
+                                <label class="checks" for="${element}">${element}</label>
+                                </div>
+        `
+    });
+}
 ////////////////////////////////////////////////////////////////////////////
-function addCategory(category){
+function addCategory(category) {
     filteredCat.push(category)
-} 
+}
 ////////////////////////////////////////////////////////////////////////////
-function deleteCategory(category){
-    filteredCat.forEach(element =>{
+function deleteCategory(category) {
+    filteredCat.forEach(element => {
         if (element == category) {
-            filteredCat.splice(filteredCat.indexOf(element),1)
+            filteredCat.splice(filteredCat.indexOf(element), 1)
         }
     })
 }
 ///////////////////////////////////////////////////////////////////////////
-function textFilter(array,text){
+function textFilter(array, text) {
     if (text.length == 0) {
         return array
     } else {
-        return array.filter(element=>element.name.toLowerCase().includes(text) || element.description.toLowerCase().includes(text))
+        return array.filter(element => element.name.toLowerCase().includes(text) || element.description.toLowerCase().includes(text))
     }
 }
 //////////////////////////////////////////////////////////////////////////////
 
-function cardsFiltered(events,categories){ //returns array with objects filtered by category
+function cardsFiltered(events, categories) { //returns array with objects filtered by category
     if (categories.length == 0) {
         return events
     } else {
         let aux1 = []
-        let aux2,aux3
+        let aux2, aux3
         categories.forEach(category => {
-            aux3 = events.filter(element=>element.category == category)
+            aux3 = events.filter(element => element.category == category)
             aux1 = aux1.concat(aux3)
         })
         aux2 = Array.from(new Set(aux1))
@@ -53,12 +72,12 @@ function cardsFiltered(events,categories){ //returns array with objects filtered
     }
 }
 ///////////////////////////////////////////////////////////////////////////////
-function renderCards(events){
+function renderCards(events) {
     console.log(events)
-    cardCont.innerHTML=""
+    cardCont.innerHTML = ""
     if (events.length == 0) {
-        cardCont.innerHTML=`<h3>No events to show....</h3>`
-    }else{
+        cardCont.innerHTML = `<h3>No events to show....</h3>`
+    } else {
 
         for (let cardInfo of events) {
             const card = document.createElement('div');
@@ -78,24 +97,24 @@ function renderCards(events){
                 </div>
                 `
             fragment.appendChild(card);
-        }        
+        }
         cardCont.appendChild(fragment);
     }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-checkCont.addEventListener("click",(e)=>{
-    if(e.target.checked){
+checkCont.addEventListener("click", (e) => {
+    if (e.target.checked) {
         addCategory(e.target.value)
-        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
-    }else{
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
+    } else {
         deleteCategory(e.target.value)
-        renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+        renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
     }
 })
 /////////////////////////////////////////////////////////////////////////////////
-searchBar.addEventListener("keyup",()=>{
-    renderCards(textFilter(cardsFiltered(events,filteredCat),searchBar.value.toLowerCase().trim()))
+searchBar.addEventListener("keyup", () => {
+    renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
 })
 
 // cardCont.addEventListener("click",(e)=>{
