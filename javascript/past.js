@@ -3,13 +3,14 @@ const fragment = document.createDocumentFragment();
 const checkCont = document.getElementById('chkCont');
 const searchBar = document.getElementById('searchSection');
 let events;
+let date;
 fetch("https://amazing-events.herokuapp.com/api/events")
     .then(element => element.json())
     .then(array => {
+        date = array.currentDate
         events = past(array.events);
         checkCategories(events)
         renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
-        console.log(events)
     });
 
 let filteredCat = []
@@ -38,7 +39,7 @@ function checkCategories(events) {
 /////////////////////////////////////////////////////////////////////////////////////
 function past(events){
     let aux = []
-    let actualDate = data.currentDate.split('-');
+    let actualDate = date.split('-');
     events.forEach(element => {
         let cardDate = element.date.split('-');
         if (validatePastDate(actualDate,cardDate)){

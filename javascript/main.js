@@ -9,7 +9,6 @@ fetch("https://amazing-events.herokuapp.com/api/events")
         events = array.events;
         checkCategories(events)
         renderCards(textFilter(cardsFiltered(events, filteredCat), searchBar.value.toLowerCase().trim()))
-        console.log(events)
     });
     
 let filteredCat = []
