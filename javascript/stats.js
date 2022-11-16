@@ -11,7 +11,7 @@ const app = createApp({
 
     },
     created() {
-        fetch("https://amazing-events.herokuapp.com/api/events")
+        fetch('https://amazing-events.herokuapp.com/api/events')
             .then(res => res.json())
             .then(array => {
                 this.events = array.events
