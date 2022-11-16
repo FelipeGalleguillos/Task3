@@ -48,19 +48,24 @@ const app = createApp({
 
             categories.forEach(category => {
                 let revenues = table2.filter(event=>event.category==category)
-                                     .reduce((total,event)=>total+(event.estimate*event.price))
+                                     .map(event=>event.price*event.estimate)
+                                     .reduce((total,revenue)=>total+revenue)
                 let estimate = table2.filter(event=>event.category==category)
-                                     .reduce((total,event)=>total+event.estimate)
+                                     .map(event=>event.estimate)
+                                     .reduce((total,estimate)=>total+estimate)
                 let capacity = table2.filter(event=>event.category==category)
-                                     .reduce((total,event)=>total+event.capacity)
+                                     .map(event=>event.capacity)
+                                     .reduce((total,capacity)=>total+capacity)
                 let row = {
                     col1: category,
                     col2: revenues,
-                    col3: estimate*100/capacity
+                    col3: Math.trunc(estimate*100/capacity)
                 } 
 
                 this.table2.push(row)
             });
+            revenues = revenues.map(element => element.price * element.assistance)
+                .reduce((total, element) => total + element)
 
         }
 
