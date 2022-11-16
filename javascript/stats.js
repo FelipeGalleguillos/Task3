@@ -10,16 +10,10 @@ fetch("https://amazing-events.herokuapp.com/api/events")
 //////////////////////////////////////////////////////////////////////////////////
 function renderTable(events, date) {
     let categories = Array.from(new Set(events.map(element => element.category)))
-    let tableEvents = events.map(element => {
-        let aux, num
-        if (element.assistance) {
-            num = element.assistance
-        } else {
-            num = element.estimate
-        }
+    let tableEvents = events.filter(element=>element.assistance).map(element => {
         aux = {
             name: element.name,
-            attendance: (num * 100 / element.capacity).toFixed(1),
+            attendance: (element.assistance * 100 / element.capacity).toFixed(1),
             capacity: element.capacity
         }
         return aux
@@ -36,14 +30,12 @@ function renderFirstTable(array) {
     let higherCapacity = highCapacity(array)
     const table1 = document.getElementById('table1')
 
-    for (let x = 0; x < 1 /*array.length/2*/; x++) {
         let tr = document.createElement('tr')
-        tr.innerHTML += `<td>${highPercentage[x].name} - ${highPercentage[x].attendance}%</td>
-        <td>${lowPercentage[x].name} - ${lowPercentage[x].attendance}%</td>
-        <td>${higherCapacity[x].name} - ${higherCapacity[x].capacity}</td>
+        tr.innerHTML += `<td>${highPercentage[0].name} - ${highPercentage[0].attendance}%</td>
+        <td>${lowPercentage[0].name} - ${lowPercentage[0].attendance}%</td>
+        <td>${higherCapacity[0].name} - ${higherCapacity[0].capacity}</td>
         `
         table1.appendChild(tr)
-    }
 }
 ////////////////////////////////////////////////////////////
 function renderSecondandThirdTable(array, date, categories) {
