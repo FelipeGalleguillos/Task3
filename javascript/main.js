@@ -19,6 +19,7 @@ const app = createApp({
         .then(res=>res.json())
         .then(array=>{
             this.events=array.events
+            console.log(this.events);
             this.filteredEvents=array.events
             this.date=array.currentDate.split('-')
             this.getCategories()
