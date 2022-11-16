@@ -86,6 +86,11 @@
                         <th>Revenues</th>
                         <th>Percentage of attendance</th>
                     </tr>
+                    <tr v-for="row in table3">
+                        <td>{{row.col1}}</td>
+                        <td>$ {{row.col2}}</td>
+                        <td>{{row.col3}} %</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

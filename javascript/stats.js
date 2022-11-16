@@ -19,6 +19,7 @@ const app = createApp({
                 this.date = array.currentDate
                 this.infoTable1()
                 this.infoTable2()
+                this.infoTable3()
             })
             .catch(err => console.log(err))
     },
@@ -59,13 +60,35 @@ const app = createApp({
                 let row = {
                     col1: category,
                     col2: revenues,
-                    col3: Math.trunc(estimate*100/capacity)
+                    col3: (estimate*100/capacity).toFixed(1)
                 } 
 
                 this.table2.push(row)
             });
-            revenues = revenues.map(element => element.price * element.assistance)
-                .reduce((total, element) => total + element)
+
+        },
+        infoTable3(){
+            let table3 = this.events.filter(event=> event.date < this.date)
+            let categories = Array.from(new Set(table3.map(event=>event.category)))
+
+            categories.forEach(category => {
+                let revenues = table3.filter(event=>event.category==category)
+                                     .map(event=>event.price*event.assistance)
+                                     .reduce((total,revenue)=>total+revenue)
+                let assistance = table3.filter(event=>event.category==category)
+                                     .map(event=>event.assistance)
+                                     .reduce((total,assistance)=>total+assistance)
+                let capacity = table3.filter(event=>event.category==category)
+                                     .map(event=>event.capacity)
+                                     .reduce((total,capacity)=>total+capacity)
+                let row = {
+                    col1: category,
+                    col2: revenues,
+                    col3: (assistance*100/capacity).toFixed(1)
+                } 
+
+                this.table3.push(row)
+            });
 
         }
 
