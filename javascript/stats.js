@@ -3,6 +3,7 @@ const { createApp } = Vue
 const app = createApp({
     data() {
         return {
+            date:'',
             events: [],
             table1: [],
             table2: [],
@@ -15,7 +16,9 @@ const app = createApp({
             .then(res => res.json())
             .then(array => {
                 this.events = array.events
+                this.date = array.currentDate
                 this.infoTable1()
+                this.infoTable2()
             })
             .catch(err => console.log(err))
     },
@@ -32,16 +35,34 @@ const app = createApp({
             let higher = table1.sort((a,b)=>b.attendance-a.attendance)[0]
             let lower = table1[table1.length-1]
             let highCapacity = table1.sort((a,b)=>b.capacity-a.capacity)[0]
-            let object={
+            let row={
                 col1:higher,
                 col2:lower,
                 col3:highCapacity
             }
-            this.table1.push(object)
+            this.table1.push(row)
         },
-        // infoTable2(){ HACER INFO DE TABLE 2
+        infoTable2(){
+            let table2 = this.events.filter(event=> event.date > this.date)
+            let categories = Array.from(new Set(table2.map(event=>event.category)))
 
-        // }
+            categories.forEach(category => {
+                let revenues = table2.filter(event=>event.category==category)
+                                     .reduce((total,event)=>total+(event.estimate*event.price))
+                let estimate = table2.filter(event=>event.category==category)
+                                     .reduce((total,event)=>total+event.estimate)
+                let capacity = table2.filter(event=>event.category==category)
+                                     .reduce((total,event)=>total+event.capacity)
+                let row = {
+                    col1: category,
+                    col2: revenues,
+                    col3: estimate*100/capacity
+                } 
+
+                this.table2.push(row)
+            });
+
+        }
 
     }
 })
