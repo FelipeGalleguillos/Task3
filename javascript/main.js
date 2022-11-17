@@ -7,7 +7,6 @@ const app = createApp({
             checked:[],
             categories:[],
             date:[],
-            checked:[],
             filteredEvents:[],
             searchInput:''
 
@@ -17,11 +16,11 @@ const app = createApp({
     created(){
         fetch("https://amazing-events.herokuapp.com/api/events")
         .then(res=>res.json())
-        .then(array=>{
-            this.events=array.events
+        .then(object=>{
+            this.events=object.events
             console.log(this.events);
-            this.filteredEvents=array.events
-            this.date=array.currentDate.split('-')
+            this.filteredEvents=object.events
+            this.date=object.currentDate.split('-')
             this.getCategories()
         })
         .catch(err=>console.log(err))

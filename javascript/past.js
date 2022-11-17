@@ -7,19 +7,17 @@ const app = createApp({
             checked:[],
             categories:[],
             date:[],
-            checked:[],
             filteredEvents:[],
             searchInput:''
-
         }
 
     },
     created(){
         fetch("https://amazing-events.herokuapp.com/api/events")
         .then(res=>res.json())
-        .then(array=>{
-            this.date=array.currentDate.split('-')
-            this.events = this.filterByDate(array.events)
+        .then(object=>{
+            this.date=object.currentDate.split('-')
+            this.events = object.events.filter(event=>event.date < this.date)
             this.filteredEvents=this.events
             this.getCategories()
         })
@@ -29,21 +27,7 @@ const app = createApp({
         getCategories(){
             let fn = event => event.category 
             this.categories=[... new Set(this.events.filter(fn).map(fn))]   
-        },
-        filterByDate(data){
-            let aux = []
-            let actualDate = this.date
-            data.forEach(element => {
-                let dataDate = element.date.split('-')
-                if((dataDate[0]<actualDate[0])
-                ||(dataDate[0]==actualDate[0]&&dataDate[1]<actualDate[1])
-                ||(dataDate[0]==actualDate[0]&&dataDate[1]==actualDate[1]&&dataDate[2]<actualDate[2])){
-                    aux.push(element) 
-                }
-            });
-            return aux
         }
-
     },
     computed:{
         filter(){
@@ -54,7 +38,6 @@ const app = createApp({
             }else{
                 this.filteredEvents=secondFilter
             }
-
         },
     },
 

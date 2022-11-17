@@ -21,15 +21,6 @@ html{
     width: 100%;
 }
 
-/* @keyframes pop {
-    from{
-        transform: scale(0.9);
-    }
-    to{
-        transform: scale(1);
-    }
-} */
-
 .cardAnim:hover{
     transform: scale(1.06);
 }
